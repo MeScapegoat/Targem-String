@@ -2,14 +2,12 @@
 #include <vector>
 #include <algorithm>
 #include <cctype>
-#include <string>
 #include "String.h"
 
 #ifndef NDEBUG
 #include <sstream>
 void simpleStringTests()
 {
-	std::cerr << "DEBUG\n";
 	// **** ВОЛЬНОЕ ТВОРЧЕСТВО ****
 	//Конструктор по умолчанию
 	{
@@ -34,7 +32,7 @@ void simpleStringTests()
 			throw std::logic_error( "Incorrect operator< for different letters!" );
 
 		if ( !( empty < a) )
-			throw std::logic_error( "incorrect operator< for empty string!" );
+			throw std::logic_error( "Incorrect operator< for empty string!" );
 	}
 
 	// сравнение >
@@ -50,7 +48,7 @@ void simpleStringTests()
 			throw std::logic_error( "Incorrect operator> for different letters!" );
 
 		if ( empty > a )
-			throw std::logic_error( "incorrect operator> for empty string!" );
+			throw std::logic_error( "Incorrect operator> for empty string!" );
 	}
 
 	// сравнение ==
@@ -69,7 +67,7 @@ void simpleStringTests()
 			throw std::logic_error( "Incorrect operator== for different letters!" );
 
 		if ( !(empty1 == empty2 ) )
-			throw std::logic_error( "incorrect operator== for empty strings!" );
+			throw std::logic_error( "Incorrect operator== for empty strings!" );
 	}
 
 	// оператор вывода
@@ -342,12 +340,14 @@ int main()
 	{
 		std::vector<String> input;
 		String str;
+
 		std::cout << "Enter strings to sort (type \"0\" to quit):\n";
 		while ( true )
 		{
 			getline( std::cin, str );
 			if ( str == "0" )
 				break;
+
 			input.push_back( String( str ) );
 		}
 

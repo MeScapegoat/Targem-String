@@ -8,11 +8,9 @@ String::String( const String& str ) : _size( str._size )
 }
 
 
-String::String( String&& str ) noexcept
+String::String( String&& str ) noexcept : string(str.string), _size(str._size)
 {
-	_size = str._size;
 	str._size = 0;
-	string = str.string;
 	str.string = nullptr;
 }
 
