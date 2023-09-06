@@ -2,7 +2,6 @@
 #define __TARGEMSTRING_H
 #include <iostream>
 
-
 class String
 {
 public:
@@ -29,15 +28,23 @@ public:
 	friend String operator+( const String& str, const char* const chr );
 	friend String operator+( const char* const chr, const String& str );
 
-	//
+
+	// Вольное творчество - друзья
 	friend std::ostream& operator<<( std::ostream& os, const String& str );
+	friend std::istream& operator>>( std::istream& is, String& str );
+	friend std::istream& getline( std::istream& is, String& str );
 	friend bool operator< ( const String& lhs, const String& rhs );
 	friend bool operator> ( const String& lhs, const String& rhs );
 	friend bool operator== ( const String& lhs, const String& rhs );
+
+	// Вольное творчество - родные
+	String() : string( nullptr ), _size( 0 ){}
 	char& operator[]( const size_t& n ) { return string[ n ]; }
 	const char& operator[]( const size_t& n ) const { return string[ n ]; }
 	size_t size() const { return _size; }
+	char* data() { return string; }
 	~String() { delete[] string; }
+
 private:
 	char* string = nullptr;
 	size_t _size = 0;
@@ -53,7 +60,10 @@ bool operator< ( const String& lhs, const String& rhs );
 bool operator> ( const String& lhs, const String& rhs );
 bool operator== ( const String& lhs, const String& rhs );
 
+
 std::ostream& operator<<( std::ostream& os, const String& str );
+std::istream& operator>>( std::istream& is, String& str );
+std::istream& getline( std::istream& is, String& str );
 
 
 #endif //__TARGEMSTRING_H
